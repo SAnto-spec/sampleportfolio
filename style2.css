@@ -185,6 +185,20 @@ nav a:hover { color: var(--primary); }
   margin-bottom: 30px;
 }
 
+.hero .yup {
+  min-height: 2rem;
+  min-width: 300px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.hero .yup p {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
 .hero-btns {
   display: flex;
   gap: 15px;
@@ -320,6 +334,60 @@ footer {
   font-size: 0.9rem;
 }
 
+/* --- Contact Form --- */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.h1 .yup {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+#role {
+  color: #3b82f6;
+}
+
+.a2 {
+ align-items: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 16px;
+  border: 2px solid #334155;
+  border-radius: 6px;
+  background-color: rgba(30, 41, 59, 0.5);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: rgba(30, 41, 59, 0.8);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .hero h2 { font-size: 2.5rem; }
@@ -341,4 +409,7 @@ footer {
 
   /* Project images slightly shorter on mobile */
   .project-image { height: 150px; }
+  
+  /* Contact form mobile */
+  .contact-form { gap: 15px; }
 }

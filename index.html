@@ -28,7 +28,8 @@
     <div class="container">
       <p class="subtitle">Hello, I'm</p>
       <h2>Santo Xavier</h2>
-      <p class="role">Aspiring Developer | Learner | Builder</p>
+      <h1 class="yup"><p id="role"></p></h1>
+   
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">View My Work</a>
         <a href="#contact" class="btn btn-outline">Get in Touch</a>
@@ -76,8 +77,8 @@
               <span class="tag">css</span>
             </div>
             <div class="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">View Code</a>
+              <a href="http://localhost:5173/">Live Demo</a>
+              <a href="C:\Users\Acer\OneDrive\Desktop\projects\frontend">View Code</a>
             </div>
           </div>
         </article>
@@ -99,7 +100,6 @@
             </div>
           </div>
         </article>
-      </div>
     </div>
   </section>
 
@@ -107,10 +107,51 @@
     <div class="container contact-container">
       <h2 class="section-title">Let's Work Together</h2>
       <p>I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
-      <div class="contact-links">
-        <a href="mailto:santoxavier5948@gmail.com" class="btn btn-primary">Email Me</a>
-        <a href="https://www.linkedin.com/in/santo-xavier-409971360/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Ba41rEvyiSX2D80Bbauk4DA%3D%3D" class="btn btn-secondary" target="_blank">LinkedIn</a>
-        <a href="https://github.com/SAnto-spec" class="btn btn-secondary" target="_blank">GitHub</a>
+      
+      <form id="contactForm" class="contact-form">
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="name"
+            placeholder="Your Name" 
+            required
+          >
+        </div>
+        <div class="form-group">
+          <input 
+            type="email" 
+            id="email"
+            placeholder="Your Email" 
+            required
+          >
+        </div>
+        <div class="form-group">
+          <input 
+            type="tel" 
+            id="phone"
+            placeholder="Your Phone Number" 
+            required
+          >
+        </div>
+        <div class="form-group">
+          <textarea 
+            id="message"
+            placeholder="Your Message" 
+            rows="5"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <span id="statusMessage" style="margin-top: 10px; text-align: center; display: block;"></span>
+      </form>
+
+      <div class="contact-links" style="margin-top: 40px;">
+        <p style="margin-bottom: 20px; opacity: 0.8;">Or reach out directly:</p>
+        
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=santoxavier5948@gmail.com" class="btn btn-secondary">Email Me</a>
+          <a href="https://www.linkedin.com/in/santo-xavier-409971360/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Ba41rEvyiSX2D80Bbauk4DA%3D%3D" class="btn btn-secondary" target="_blank">LinkedIn</a>
+          <a href="https://github.com/SAnto-spec" class="btn btn-secondary" target="_blank">GitHub</a>
+        
       </div>
     </div>
   </section>
@@ -119,7 +160,51 @@
     <p>&copy; 2026 Santo Xavier. Built with code & coffee.</p>
   </footer>
 
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+  emailjs.init({
+    publicKey: "MdW7jb8xyJsB8n5Xi",
+  });
+
+  var typed = new Typed('#role', {
+    strings: ['Aspiring Developer', 'UI Designer', 'Video Editor', 'Builder'],
+    typeSpeed: 90,
+    backSpeed: 50,
+    loop: true
+  });
+
+          // Handle form submission
+          document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const statusMessage = document.getElementById('statusMessage');
+            statusMessage.textContent = 'Sending...';
+            statusMessage.style.color = '#3b82f6';
+
+            emailjs.send('service_mbn1u07', 'template_lheiz4q', {
+              to_email: 'santoxavier5948@gmail.com',
+              name: document.getElementById('name').value,
+              email: document.getElementById('email').value,
+              phone: document.getElementById('phone').value,
+              message: document.getElementById('message').value
+            }).then(function(response) {
+              statusMessage.textContent = 'Message sent successfully! 🎉';
+              statusMessage.style.color = '#10b981';
+              document.getElementById('contactForm').reset();
+              setTimeout(() => {
+                statusMessage.textContent = '';
+              }, 5000);
+            }, function(error) {
+              statusMessage.textContent = 'Error sending message. Please try again.';
+              statusMessage.style.color = '#ef4444';
+              console.error('EmailJS Error:', error);
+            });
+          });
+        </script>
+
   </body>
   </html>
-</body>
 </html>
